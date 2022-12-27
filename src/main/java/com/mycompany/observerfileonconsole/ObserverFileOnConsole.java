@@ -11,9 +11,24 @@ package com.mycompany.observerfileonconsole;
  */
 public class ObserverFileOnConsole {
 
-    public static void main(String[] args) {
-        FileStatus  usrFile  =  new FileStatus("user.txt");
-        System.out.println(usrFile.getInfomsg());
+    public static void main(String[] args){
+        
+        FileMonitor monitorObj = new FileMonitor ();
+        monitorObj.AddConsoleMonitor(ConsoleMonitor.getInstance());
+        monitorObj.addFile ("user.txt");
+        monitorObj.addFile ("userB.txt");
+        monitorObj.addFile ("userA.txt");
+        
+        boolean doCycle = true;
+        while(doCycle == true){
+        
+             monitorObj.NotifyConsoleMonitor();
+             
+        }
+        
+       // SingleConsoleMonitor.getInstance().InfoFile("user.txt");
+       // FileStatus  usrFile  =  new FileStatus("user.txt");
+       // System.out.println(usrFile.getInfomsg());
         
 //        System.out.println(usrFile.exist);
 //        System.out.println(usrFile.lastModif);
@@ -21,14 +36,15 @@ public class ObserverFileOnConsole {
 //        System.out.println(usrFile.nameFile);
 //        System.out.println(usrFile.pathFile);
       
-        boolean doCycle = true;
-        while(doCycle == true){
+        //boolean doCycle = true;
+        //while(doCycle == true){
         
 
-        if(usrFile.UpdateInfo() == true)
-        {
+        //if(usrFile.UpdateInfo() == true)
+        //{
             
-            System.out.println(usrFile.getInfomsg());
+          //  System.out.println(usrFile.getInfomsg());
+            
 //        System.out.println(usrFile.exist);
 //        Date d = new Date(usrFile.lastModif);
 //        System.out.println(d);
@@ -40,6 +56,6 @@ public class ObserverFileOnConsole {
         
       //  System.out.println("Sleep time in ms = "+(System.currentTimeMillis()-start));
         }
-    }
-    }
+    
+    
 
